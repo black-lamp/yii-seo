@@ -13,15 +13,16 @@ abstract class CacheableMenu extends Menu
 {
     public $cacheKey;
     public $cacheDependency;
+    public $dropDownTemplate;
 
     public function init()
     {
         if(!empty(Yii::$app->cache) && !empty($this->cacheKey)) {
             $this->items = Yii::$app->cache->getOrSet($this->cacheKey . '_' . Yii::$app->language, function () {
-                return $this->getItems();
+                return array_merge($this->items, $this->getItems());
             }, 0, $this->cacheDependency);
         } else {
-            $this->items = $this->getItems();
+            $this->items = array_merge($this->items, $this->getItems());
         }
         parent::init();
     }
