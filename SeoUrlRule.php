@@ -2,7 +2,7 @@
 namespace bl\seo;
 
 use bl\seo\entities\SeoData;
-use yii\base\Object;
+use yii\base\BaseObject;
 use yii\db\ActiveRecordInterface;
 use yii\web\Request;
 use yii\web\UrlManager;
@@ -11,7 +11,7 @@ use yii\web\UrlRuleInterface;
 /**
  * @author Gutsulyak Vadim <guts.vadim@gmail.com>
  */
-class SeoUrlRule extends Object implements UrlRuleInterface
+class SeoUrlRule extends BaseObject implements UrlRuleInterface
 {
     public $modelClass;
     public $prefix = '';
